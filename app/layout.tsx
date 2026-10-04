@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "Next.js (static export) + TypeScript + Tailwind CSS + shadcn/ui + Prisma schema + LocalStorage + NextAuth.js (frontend) + Zod. Deployed to GitHub Pages.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="zh-Hant"

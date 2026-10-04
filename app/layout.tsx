@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Openclaw1003 · 靜態站",
+  title: "Todo List · Openclaw1003",
   description:
-    "Next.js (static export) + TypeScript + Tailwind CSS + shadcn/ui + Prisma schema + LocalStorage + NextAuth.js (frontend) + Zod. Deployed to GitHub Pages.",
+    "以 Next.js 靜態輸出打造的 Todo List：新增、編輯、刪除、到期日與完成標記，現代化 UI。",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

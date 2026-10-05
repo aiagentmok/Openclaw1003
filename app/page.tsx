@@ -13,6 +13,11 @@ const APPS = [
     title: "To Do List",
     desc: "待辦清單：新增／編輯／刪除、到期日、完成標記、分類標籤、搜尋、排序與匯出。",
   },
+  {
+    href: "/Restaurant",
+    title: "Johnny Japan · 日式餐廳",
+    desc: "餐廳形象網站：簡介、品牌理念、招牌菜式、環境相片、營業時間、地址與聯絡。",
+  },
 ];
 
 export default function Home() {

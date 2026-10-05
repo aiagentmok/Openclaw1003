@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 const nav = [
   { href: "/Restaurant", label: "首頁" },
   { href: "/Restaurant/menu", label: "菜單" },
+  { href: "/Restaurant/order", label: "線上點餐" },
   { href: "#gallery", label: "環境" },
   { href: "#hours", label: "營業時間" },
   { href: "#contact", label: "聯絡" },
@@ -67,12 +68,12 @@ export default function RestaurantHome() {
               >
                 View Menu
               </Link>
-              <a
-                href="#contact"
+              <Link
+                href="/Restaurant/order"
                 className="rounded-full border border-black/15 px-6 py-3 text-sm font-medium transition-colors hover:bg-black/5"
               >
-                訂位／聯絡
-              </a>
+                線上點餐
+              </Link>
             </div>
           </div>
           <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5">

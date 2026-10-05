@@ -8,21 +8,13 @@ export const RESTAURANT = {
   nameJp: "ジョニー・ジャパン",
   latin: "JAPANESE RESTAURANT",
   tagline: "MODERN CUSINE • TOKYO EST. 2024",
+  currency: "¥",
   intro:
     "Johnny Japan 於 2024 年創立於東京，以現代視角重新詮釋日本料理。我們嚴選當造食材，揉合傳統技法與當代美學，在簡約靜謐的空間中，呈現一席屬於這個時代的日式餐桌。",
   philosophy: [
-    {
-      title: "旬 · 順應季節",
-      body: "依循四時更迭選材，把當造食材最飽滿的鮮味留在餐桌上。",
-    },
-    {
-      title: "匠 · 職人技藝",
-      body: "由刀工到火候，每一道工序皆由職人親手完成，追求精準而克制。",
-    },
-    {
-      title: "簡 · 減法美學",
-      body: "以最少的調味帶出原味，讓食材本身成為主角。",
-    },
+    { title: "旬 · 順應季節", body: "依循四時更迭選材，把當造食材最飽滿的鮮味留在餐桌上。" },
+    { title: "匠 · 職人技藝", body: "由刀工到火候，每一道工序皆由職人親手完成，追求精準而克制。" },
+    { title: "簡 · 減法美學", body: "以最少的調味帶出原味，讓食材本身成為主角。" },
   ],
   hours: [
     { days: "星期一至星期四", time: "11:30 – 15:00 ／ 17:30 – 22:00" },
@@ -51,61 +43,23 @@ export type DishCategory = {
 
 /** 招牌菜式類別卡片。image 為示意，待補正式相片。 */
 export const CATEGORIES: DishCategory[] = [
-  {
-    id: "sushi",
-    name: "壽司",
-    nameJp: "すし",
-    desc: "職人即席握製，醋飯溫潤，配以當日直送海鮮。",
-    price: "由 ¥3,800 起",
-    image: "/images/restaurant/photo-1.jpg",
-  },
-  {
-    id: "sashimi",
-    name: "刺身",
-    nameJp: "さしみ",
-    desc: "厚切時令魚鮮，佐以本釀造醬油與現磨山葵。",
-    price: "由 ¥2,600 起",
-    image: "/images/restaurant/photo-2.jpg",
-  },
-  {
-    id: "yakitori",
-    name: "串燒",
-    nameJp: "やきとり",
-    desc: "備長炭直火慢烤，鎖住肉汁，配自家調製醬汁。",
-    price: "由 ¥180 起",
-    image: "/images/restaurant/photo-3.jpg",
-  },
-  {
-    id: "tempura",
-    name: "天婦羅",
-    nameJp: "てんぷら",
-    desc: "薄衣輕炸，外脆內嫩，佐天汁或海鹽享用。",
-    price: "由 ¥1,800 起",
-    image: "/images/restaurant/photo-1.jpg",
-  },
-  {
-    id: "ramen",
-    name: "拉麵",
-    nameJp: "らーめん",
-    desc: "自家製麵配濃郁豚骨或清爽醬油湯底。",
-    price: "由 ¥1,200 起",
-    image: "/images/restaurant/photo-2.jpg",
-  },
-  {
-    id: "donburi",
-    name: "丼飯",
-    nameJp: "どんぶり",
-    desc: "嚴選米飯鋪上新鮮配料，一碗盡享層次。",
-    price: "由 ¥1,500 起",
-    image: "/images/restaurant/photo-3.jpg",
-  },
+  { id: "sushi", name: "壽司", nameJp: "すし", desc: "職人即席握製，醋飯溫潤，配以當日直送海鮮。", price: "由 ¥3,800 起", image: "/images/restaurant/photo-1.jpg" },
+  { id: "sashimi", name: "刺身", nameJp: "さしみ", desc: "厚切時令魚鮮，佐以本釀造醬油與現磨山葵。", price: "由 ¥2,600 起", image: "/images/restaurant/photo-2.jpg" },
+  { id: "yakitori", name: "串燒", nameJp: "やきとり", desc: "備長炭直火慢烤，鎖住肉汁，配自家調製醬汁。", price: "由 ¥180 起", image: "/images/restaurant/photo-3.jpg" },
+  { id: "tempura", name: "天婦羅", nameJp: "てんぷら", desc: "薄衣輕炸，外脆內嫩，佐天汁或海鹽享用。", price: "由 ¥1,800 起", image: "/images/restaurant/photo-1.jpg" },
+  { id: "ramen", name: "拉麵", nameJp: "らーめん", desc: "自家製麵配濃郁豚骨或清爽醬油湯底。", price: "由 ¥1,200 起", image: "/images/restaurant/photo-2.jpg" },
+  { id: "donburi", name: "丼飯", nameJp: "どんぶり", desc: "嚴選米飯鋪上新鮮配料，一碗盡享層次。", price: "由 ¥1,500 起", image: "/images/restaurant/photo-3.jpg" },
 ];
 
 export type MenuItem = {
+  id: string;
   name: string;
   nameJp?: string;
   desc: string;
+  /** 顯示用價錢字串 */
   price: string;
+  /** 數值價錢（購物車計算用） */
+  priceValue: number;
 };
 
 export type MenuSection = {
@@ -115,16 +69,25 @@ export type MenuSection = {
   items: MenuItem[];
 };
 
-/** 菜單內頁資料（示意）。 */
+const item = (id: string, name: string, priceValue: number, desc: string, nameJp?: string): MenuItem => ({
+  id,
+  name,
+  nameJp,
+  desc,
+  priceValue,
+  price: `¥${priceValue.toLocaleString("en-US")}`,
+});
+
+/** 菜單資料（示意，可於線上點餐使用）。 */
 export const MENU: MenuSection[] = [
   {
     id: "appetizer",
     title: "前菜",
     titleJp: "先付",
     items: [
-      { name: "胡麻豆腐", nameJp: "ごまどうふ", desc: "自家製芝麻豆腐，配山葵與柚子皮。", price: "¥880" },
-      { name: "醋漬海蘊", nameJp: "もずく酢", desc: "沖繩水雲配三杯醋，清爽開胃。", price: "¥780" },
-      { name: "茶碗蒸", nameJp: "ちゃわんむし", desc: "滑嫩蒸蛋，加入銀杏、蝦與香菇。", price: "¥980" },
+      item("app-1", "胡麻豆腐", 880, "自家製芝麻豆腐，配山葵與柚子皮。", "ごまどうふ"),
+      item("app-2", "醋漬海蘊", 780, "沖繩水雲配三杯醋，清爽開胃。", "もずく酢"),
+      item("app-3", "茶碗蒸", 980, "滑嫩蒸蛋，加入銀杏、蝦與香菇。", "ちゃわんむし"),
     ],
   },
   {
@@ -132,9 +95,9 @@ export const MENU: MenuSection[] = [
     title: "壽司・刺身",
     titleJp: "すし・さしみ",
     items: [
-      { name: "特上握壽司十二貫", nameJp: "おまかせ握り", desc: "由職人依當日漁獲配搭。", price: "¥5,800" },
-      { name: "本鮪三味", nameJp: "本まぐろ", desc: "赤身、中拖羅、大拖羅。", price: "¥3,200" },
-      { name: "五點刺身拼盤", desc: "當日時令魚鮮五款。", price: "¥3,600" },
+      item("sus-1", "特上握壽司十二貫", 5800, "由職人依當日漁獲配搭。", "おまかせ握り"),
+      item("sus-2", "本鮪三味", 3200, "赤身、中拖羅、大拖羅。", "本まぐろ"),
+      item("sus-3", "五點刺身拼盤", 3600, "當日時令魚鮮五款。"),
     ],
   },
   {
@@ -142,8 +105,8 @@ export const MENU: MenuSection[] = [
     title: "燒物",
     titleJp: "焼き物",
     items: [
-      { name: "備長炭串燒拼盤", nameJp: "串焼き盛り合わせ", desc: "雞腿、雞軟骨、雞皮、蔥段、冬菇。", price: "¥2,400" },
-      { name: "鹽燒喉黑魚", nameJp: "のどぐろ塩焼き", desc: "炭火鹽燒，皮脆肉嫩。", price: "¥3,800" },
+      item("grl-1", "備長炭串燒拼盤", 2400, "雞腿、雞軟骨、雞皮、蔥段、冬菇。", "串焼き盛り合わせ"),
+      item("grl-2", "鹽燒喉黑魚", 3800, "炭火鹽燒，皮脆肉嫩。", "のどぐろ塩焼き"),
     ],
   },
   {
@@ -151,8 +114,8 @@ export const MENU: MenuSection[] = [
     title: "揚物",
     titleJp: "揚げ物",
     items: [
-      { name: "天婦羅拼盤", nameJp: "天ぷら盛り合わせ", desc: "海老、茄子、南瓜、獅子唐。", price: "¥2,200" },
-      { name: "唐揚炸雞", nameJp: "鶏の唐揚げ", desc: "外脆內嫩，配檸檬與七味。", price: "¥980" },
+      item("fry-1", "天婦羅拼盤", 2200, "海老、茄子、南瓜、獅子唐。", "天ぷら盛り合わせ"),
+      item("fry-2", "唐揚炸雞", 980, "外脆內嫩，配檸檬與七味。", "鶏の唐揚げ"),
     ],
   },
   {
@@ -160,8 +123,8 @@ export const MENU: MenuSection[] = [
     title: "麵類",
     titleJp: "麺類",
     items: [
-      { name: "豚骨拉麵", nameJp: "豚骨らーめん", desc: "濃郁豚骨湯，自家製細麵。", price: "¥1,200" },
-      { name: "冷蕎麥麵", nameJp: "ざるそば", desc: "十割蕎麥，配特調麵汁。", price: "¥1,100" },
+      item("nod-1", "豚骨拉麵", 1200, "濃郁豚骨湯，自家製細麵。", "豚骨らーめん"),
+      item("nod-2", "冷蕎麥麵", 1100, "十割蕎麥，配特調麵汁。", "ざるそば"),
     ],
   },
   {
@@ -169,11 +132,20 @@ export const MENU: MenuSection[] = [
     title: "甜點",
     titleJp: "甘味",
     items: [
-      { name: "抹茶蕨餅", nameJp: "わらび餅", desc: "宇治抹茶配黃豆粉。", price: "¥780" },
-      { name: "黑芝麻雪糕", nameJp: "黒ごまアイス", desc: "濃郁芝麻香，口感細滑。", price: "¥680" },
+      item("swt-1", "抹茶蕨餅", 780, "宇治抹茶配黃豆粉。", "わらび餅"),
+      item("swt-2", "黑芝麻雪糕", 680, "濃郁芝麻香，口感細滑。", "黒ごまアイス"),
     ],
   },
 ];
+
+/** 依 id 取得菜式。 */
+export function findMenuItem(id: string): MenuItem | undefined {
+  for (const s of MENU) {
+    const found = s.items.find((i) => i.id === id);
+    if (found) return found;
+  }
+  return undefined;
+}
 
 /** 環境相片（示意，待補正式相片）。 */
 export const GALLERY = [

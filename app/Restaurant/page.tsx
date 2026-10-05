@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { CATEGORIES, GALLERY, RESTAURANT } from "@/lib/restaurant";
+import { asset } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Johnny Japan · 日式餐廳",
@@ -25,7 +25,11 @@ export default function RestaurantHome() {
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
           <Link href="/Restaurant" className="flex items-center gap-3">
             <span className="relative block size-9 overflow-hidden rounded-full ring-1 ring-black/10">
-              <Image src="/images/restaurant/logo.jpg" alt="Johnny Japan logo" fill sizes="36px" className="object-cover" />
+              <img
+                src={asset("/images/restaurant/logo.jpg")}
+                alt="Johnny Japan logo"
+                className="h-full w-full object-cover"
+              />
             </span>
             <span className="leading-tight">
               <span className="block font-serif text-lg tracking-wide">Johnny Japan</span>
@@ -72,13 +76,10 @@ export default function RestaurantHome() {
             </div>
           </div>
           <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5">
-            <Image
-              src="/images/restaurant/logo.jpg"
+            <img
+              src={asset("/images/restaurant/logo.jpg")}
               alt="Johnny Japan 標誌"
-              fill
-              sizes="(max-width: 768px) 90vw, 448px"
-              className="object-contain p-6"
-              priority
+              className="h-full w-full object-contain p-6"
             />
           </div>
         </div>
@@ -123,13 +124,12 @@ export default function RestaurantHome() {
                 key={c.id}
                 className="group overflow-hidden rounded-2xl border border-black/5 bg-white shadow-sm transition-shadow hover:shadow-md"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={c.image}
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#eceae5]">
+                  <img
+                    src={asset(c.image)}
                     alt={c.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-5">
@@ -162,8 +162,8 @@ export default function RestaurantHome() {
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {GALLERY.map((g, i) => (
-            <div key={g.src + i} className="relative aspect-[4/3] overflow-hidden rounded-2xl ring-1 ring-black/5">
-              <Image src={g.src} alt={g.alt} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover" />
+            <div key={g.src + i} className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#eceae5] ring-1 ring-black/5">
+              <img src={asset(g.src)} alt={g.alt} loading="lazy" className="h-full w-full object-cover" />
             </div>
           ))}
         </div>

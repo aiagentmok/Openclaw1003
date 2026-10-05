@@ -13,9 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Todo List · Openclaw1003",
-  description:
-    "以 Next.js 靜態輸出打造的 Todo List：新增、編輯、刪除、到期日與完成標記，現代化 UI。",
+  title: "Openclaw1003",
+  description: "以 Next.js 靜態輸出部署於 GitHub Pages 的應用集合。",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

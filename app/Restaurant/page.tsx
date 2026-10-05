@@ -127,12 +127,18 @@ export default function RestaurantHome() {
                 className="group overflow-hidden rounded-2xl border border-black/5 bg-white shadow-sm transition-shadow hover:shadow-md"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-[#eceae5]">
-                  <img
-                    src={asset(c.image)}
-                    alt={c.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  {c.image ? (
+                    <img
+                      src={asset(c.image)}
+                      alt={c.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="grid h-full w-full place-items-center bg-gradient-to-br from-[#3f3a34] to-[#1c1917]">
+                      <span className="font-serif text-4xl tracking-[0.2em] text-white/85">{c.nameJp}</span>
+                    </div>
+                  )}
                 </div>
                 <div className="p-5">
                   <div className="flex items-baseline justify-between gap-3">

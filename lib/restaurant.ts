@@ -38,17 +38,18 @@ export type DishCategory = {
   nameJp: string;
   desc: string;
   price: string;
-  image: string;
+  /** 相片路徑；未提供時前台顯示樣式化佔位。 */
+  image?: string;
 };
 
 /** 招牌菜式類別卡片。image 為示意，待補正式相片。 */
 export const CATEGORIES: DishCategory[] = [
-  { id: "sushi", name: "壽司", nameJp: "すし", desc: "職人即席握製，醋飯溫潤，配以當日直送海鮮。", price: "由 ¥3,800 起", image: "/images/restaurant/photo-1.jpg" },
-  { id: "sashimi", name: "刺身", nameJp: "さしみ", desc: "厚切時令魚鮮，佐以本釀造醬油與現磨山葵。", price: "由 ¥2,600 起", image: "/images/restaurant/photo-2.jpg" },
-  { id: "yakitori", name: "串燒", nameJp: "やきとり", desc: "備長炭直火慢烤，鎖住肉汁，配自家調製醬汁。", price: "由 ¥180 起", image: "/images/restaurant/photo-3.jpg" },
-  { id: "tempura", name: "天婦羅", nameJp: "てんぷら", desc: "薄衣輕炸，外脆內嫩，佐天汁或海鹽享用。", price: "由 ¥1,800 起", image: "/images/restaurant/photo-1.jpg" },
-  { id: "ramen", name: "拉麵", nameJp: "らーめん", desc: "自家製麵配濃郁豚骨或清爽醬油湯底。", price: "由 ¥1,200 起", image: "/images/restaurant/photo-2.jpg" },
-  { id: "donburi", name: "丼飯", nameJp: "どんぶり", desc: "嚴選米飯鋪上新鮮配料，一碗盡享層次。", price: "由 ¥1,500 起", image: "/images/restaurant/photo-3.jpg" },
+  { id: "sushi", name: "壽司", nameJp: "すし", desc: "職人即席握製，醋飯溫潤，配以當日直送海鮮。", price: "由 ¥3,800 起", image: "/images/restaurant/photo-3.jpg" },
+  { id: "sashimi", name: "刺身", nameJp: "さしみ", desc: "厚切時令魚鮮，佐以本釀造醬油與現磨山葵。", price: "由 ¥2,600 起", image: "/images/restaurant/photo-1.jpg" },
+  { id: "yakitori", name: "串燒", nameJp: "やきとり", desc: "備長炭直火慢烤，鎖住肉汁，配自家調製醬汁。", price: "由 ¥180 起" },
+  { id: "tempura", name: "天婦羅", nameJp: "てんぷら", desc: "薄衣輕炸，外脆內嫩，佐天汁或海鹽享用。", price: "由 ¥1,800 起" },
+  { id: "ramen", name: "拉麵", nameJp: "らーめん", desc: "自家製麵配濃郁豚骨或清爽醬油湯底。", price: "由 ¥1,200 起" },
+  { id: "dessert", name: "甜點", nameJp: "甘味", desc: "抹茶與和菓子，為一餐畫上優雅句點。", price: "由 ¥680 起", image: "/images/restaurant/photo-2.jpg" },
 ];
 
 export type MenuItem = {
@@ -149,7 +150,7 @@ export function findMenuItem(id: string): MenuItem | undefined {
 
 /** 環境相片（示意，待補正式相片）。 */
 export const GALLERY = [
-  { src: "/images/restaurant/photo-1.jpg", alt: "餐廳環境 1" },
-  { src: "/images/restaurant/photo-2.jpg", alt: "餐廳環境 2" },
-  { src: "/images/restaurant/photo-3.jpg", alt: "餐廳環境 3" },
+  { src: "/images/restaurant/photo-1.jpg", alt: "刺身拼盤（附味噌湯與毛豆）" },
+  { src: "/images/restaurant/photo-3.jpg", alt: "握壽司（附山葵與薑）" },
+  { src: "/images/restaurant/photo-2.jpg", alt: "抹茶甜點" },
 ];

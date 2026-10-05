@@ -1,10 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import { z } from "zod";
 import { MENU, RESTAURANT, findMenuItem } from "@/lib/restaurant";
 import { addItem, clearCart, removeItem, setQty, useCart } from "@/lib/cart-store";
+import { makeOrderId } from "@/lib/order-id";
 
 const orderSchema = z
   .object({
@@ -101,7 +101,7 @@ export default function OrderApp() {
       setError(parsed.error.issues.map((i) => i.message).join("；"));
       return;
     }
-    const id = `JJ-${Date.now().toString(36).toUpperCase().slice(-6)}`;
+    const id = makeOrderId();
     setPlaced({ id, summary: buildSummary(id, parsed.data) });
     clearCart();
     setCopied(false);

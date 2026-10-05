@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import OrderApp from "@/components/restaurant/order-app";
+import ReserveApp from "@/components/restaurant/reserve-app";
 import { RESTAURANT } from "@/lib/restaurant";
 
 export const metadata: Metadata = {
-  title: "線上點餐 · Johnny Japan",
-  description: "Johnny Japan 線上點餐：加入購物車、調整數量、填寫落單資料並送出訂單。",
+  title: "線上訂位 · Johnny Japan",
+  description: "Johnny Japan 線上訂位：選擇日期、時間、人數並填寫聯絡資料。",
 };
 
 const nav = [
@@ -13,10 +13,9 @@ const nav = [
   { href: "/Restaurant/menu", label: "菜單" },
   { href: "/Restaurant/order", label: "線上點餐" },
   { href: "/Restaurant/reserve", label: "線上訂位" },
-  { href: "/Restaurant#contact", label: "聯絡" },
 ];
 
-export default function OrderPage() {
+export default function ReservePage() {
   return (
     <div className="min-h-screen bg-[#faf7f2] text-[#1c1917]">
       <header className="sticky top-0 z-40 border-b border-black/5 bg-[#faf7f2]/85 backdrop-blur">
@@ -40,17 +39,17 @@ export default function OrderPage() {
         </nav>
       </header>
 
-      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+      <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
         <div className="text-center">
-          <p className="text-xs uppercase tracking-[0.35em] text-[#b91c1c]">Online Order</p>
-          <h1 className="mt-3 font-serif text-4xl sm:text-5xl">線上點餐</h1>
+          <p className="text-xs uppercase tracking-[0.35em] text-[#b91c1c]">Reservation</p>
+          <h1 className="mt-3 font-serif text-4xl sm:text-5xl">線上訂位</h1>
           <p className="mt-4 text-sm text-[#8a8175]">
-            加入餐點至購物車、調整數量，填寫落單資料後送出。價格為示意，實際以店內為準。
+            選擇日期、時間與人數，並填寫聯絡資料。餐廳確認後會與你聯絡。
           </p>
         </div>
 
         <div className="mt-12">
-          <OrderApp />
+          <ReserveApp />
         </div>
 
         <div className="mt-16 text-center">
@@ -66,7 +65,7 @@ export default function OrderPage() {
 
       <footer className="border-t border-black/5 bg-[#1c1917] py-8 text-center text-xs text-[#78716c]">
         <p>
-          © {new Date().getFullYear()} Johnny Japan · {RESTAURANT.address}
+          © {new Date().getFullYear()} Johnny Japan · {RESTAURANT.phone}
         </p>
       </footer>
     </div>

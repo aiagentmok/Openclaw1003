@@ -12,6 +12,7 @@ const nav = [
   { href: "/Restaurant", label: "首頁" },
   { href: "/Restaurant/menu", label: "菜單" },
   { href: "/Restaurant/order", label: "線上點餐" },
+  { href: "/Restaurant/reserve", label: "線上訂位" },
   { href: "/Restaurant#gallery", label: "環境" },
   { href: "/Restaurant#hours", label: "營業時間" },
   { href: "/Restaurant#contact", label: "聯絡" },
